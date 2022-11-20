@@ -35,6 +35,7 @@ refs.startBtn.addEventListener('click', onStart);
 
 function onStart() {
   refs.startBtn.setAttribute('disabled', 'disabled');
+  refs.input.setAttribute('disabled', 'disabled');
   const startTime = dataPickr.selectedDates[0];
 
   let timerId = setInterval(() => {
@@ -49,6 +50,7 @@ function onStart() {
     refs.sec.textContent = time.seconds;
     if (deltaTime <= 1000) {
       clearInterval(timerId);
+      refs.input.removeAttribute('disabled');
       return;
     }
   }, 1000);
